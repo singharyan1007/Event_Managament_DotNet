@@ -1,0 +1,46 @@
+﻿@model List<EventManagement.Domain.Entities.Event>
+
+	<h1>Events :</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+			<th>Event Name</th>
+			<th>Description</th>
+			<th>Date</th>
+			<th>Location</th>
+			<th>Max Attendees</th>
+			<th>Price</th>
+			<th>Edit | Delete</th>
+
+
+			</tr>
+
+
+		</thead>
+
+		<tbody>
+		@foreach (var eve in Model)
+		{
+				<tr>
+						<td>@eve.Name</td>
+						<td>@eve.Description</td>
+						<td>@eve.DateAndTime</td>
+						<td>@eve.Location</td>
+						<td>@eve.MaxAttendees</td>
+						<td>@eve.Price</td>
+						 <td>
+                <a asp-action="Edit" asp-controller="Events" asp-route-id="@eve.EventId" class="btn btn-success">Edit</a> 
+                |
+                <a asp-action="Delete" asp-controller="Events" asp-route-id="@eve.EventId" class="btn btn-danger">Delete</a>
+            </td>
+				</tr>
+
+		}
+
+
+		</tbody>
+
+
+	</table>
+

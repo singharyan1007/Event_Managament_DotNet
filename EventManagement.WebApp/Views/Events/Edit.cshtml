@@ -1,0 +1,53 @@
+﻿@model EventManagement.Domain.Entities.Event
+
+ <div class="container mt-5">
+    <h2 class="mb-4">Edit Event</h2>
+    <form asp-action="Edit" asp-controller="Events" method="post">
+        <input hidden asp-for="EventId"/>
+        @* @Html.ValidationSummary() *@
+        <div class="mb-3">
+            <label for="EventName" class="form-label">Event Name</label>
+            <input type="text" class="form-control" id="EventName" value="@Model.Name" asp-for="Name" placeholder="Enter event name">
+            @* <span asp-validation-for="Name" class="text-danger"></span> *@
+        </div>
+
+        <div class="mb-3">
+            <label for="Description" class="form-label">Description</label>
+            <textarea class="form-control" id="Description" value="@Model.Description" asp-for="Description" rows="4" placeholder="Enter event description"></textarea>
+            @* <span asp-validation-for="Description" class="text-danger"></span> *@
+        </div>
+
+        <div class="mb-3">
+            <label for="DateTime" class="form-label">Date and Time</label>
+            <input type="datetime-local" class="form-control" id="DateTime" value="@Model.DateAndTime" asp-for="DateAndTime">
+            @* <span asp-validation-for="DateAndTime" class="text-danger"></span> *@
+        </div>
+
+        <div class="mb-3">
+            <label for="Location" class="form-label">Location</label>
+            <input type="text" class="form-control" id="Location" asp-for="Location" value="@Model.Location" placeholder="Enter event location">
+            @* <span asp-validation-for="Location" class="text-danger"></span> *@
+        </div>
+
+        <div class="mb-3">
+            <label for="MaxAttendees" class="form-label">Maximum Number of Attendees</label>
+            <input type="number" class="form-control" id="MaxAttendees" value="@Model.MaxAttendees" asp-for="MaxAttendees" placeholder="Enter max attendees">
+            @* <span asp-validation-for="MaxAttendees" class="text-danger"></span> *@
+        </div>
+
+        <div class="mb-3">
+            <label for="PricePerTicket" class="form-label">Price per Ticket (if applicable)</label>
+            <input type="number" step="0.01" class="form-control" id="PricePerTicket" value="@Model.Price" asp-for="Price" placeholder="Enter price per ticket">
+            @* <span asp-validation-for="Price" class="text-danger"></span> *@
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+         <a class="btn btn-danger" asp-action="Cancel" asp-controller="Events">Cancel</a>
+    </form>
+</div>
+
+@section Scripts
+{
+                <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+                <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
